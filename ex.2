@@ -1,0 +1,13 @@
+<?php
+
+function invertertexto($texto) {
+    return strrev($texto);
+}
+
+$texto = "olá mundo";
+
+echo "texto original: " . $texto . "<br>";
+echo "texto invertido: " . invertertexto($texto) . "<br>";
+echo "quantidade de caracteres: " . strlen($texto);
+
+?>
