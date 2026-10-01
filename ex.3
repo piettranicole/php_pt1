@@ -1,0 +1,12 @@
+<?php
+
+function mascararCpf($cpf) {
+    $ultimos = substr($cpf, -4);
+    return "*********" . $ultimos;
+}
+
+$cpf = "12345678900";
+
+echo "CPF mascarado: " . mascararCpf($cpf);
+
+?>
