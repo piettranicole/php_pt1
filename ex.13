@@ -1,0 +1,34 @@
+<?php
+
+function criptografarMensagem($texto, $chave) {
+    $resultado = "";
+
+    for ($i = 0; $i < strlen($texto); $i++) {
+        $letra = $texto[$i];
+
+        if (ctype_alpha($letra)) {
+            $inicio = ctype_upper($letra) ? ord("A") : ord("a");
+            $resultado .= chr(($ord = ord($letra) - $inicio + $chave) % 26 + $inicio);
+        } else {
+            $resultado .= $letra;
+        }
+    }
+
+    return $resultado;
+}
+
+function descriptografarMensagem($texto, $chave) {
+    return criptografarMensagem($texto, -$chave);
+}
+
+$mensagem = "ola mundo";
+$chave = 3;
+
+$criptografada = criptografarMensagem($mensagem, $chave);
+$descriptografada = descriptografarMensagem($criptografada, $chave);
+
+echo "mensagem original: " . $mensagem . "<br>";
+echo "mensagem criptografada: " . $criptografada . "<br>";
+echo "mensagem descriptografada: " . $descriptografada;
+
+?>
