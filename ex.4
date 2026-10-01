@@ -1,0 +1,18 @@
+<?php
+
+function gerarSenha($quantidade) {
+    $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
+    $senha = "";
+
+    for ($i = 0; $i < $quantidade; $i++) {
+        $senha .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+
+    return $senha;
+}
+
+$senha = gerarSenha(10);
+
+echo "senha gerada: " . $senha;
+
+?>
