@@ -1,0 +1,31 @@
+<?php
+
+function calcularDesconto($valor) {
+    if ($valor > 1000) {
+        $porcentagem = 30;
+    } elseif ($valor > 500) {
+        $porcentagem = 20;
+    } elseif ($valor > 100) {
+        $porcentagem = 10;
+    } else {
+        $porcentagem = 0;
+    }
+
+    $desconto = $valor * ($porcentagem / 100);
+    $valorFinal = $valor - $desconto;
+
+    return [
+        "original" => $valor,
+        "desconto" => $desconto,
+        "final" => $valorFinal
+    ];
+}
+
+$valor = 750;
+
+$resultado = calcularDesconto($valor);
+
+echo "valor original: R$ " . number_format($resultado["original"], 2, ",", ".") . "<br>";
+echo "desconto: R$ " . number_format($resultado["desconto"], 2, ",", ".") . "<br>";
+echo "valor final: R$ " . number_format($resultado["final"], 2, ",", ".");
+?>
