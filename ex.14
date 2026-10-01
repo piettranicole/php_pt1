@@ -1,0 +1,54 @@
+<?php
+
+function estatisticasNumericas($numeros) {
+    $soma = array_sum($numeros);
+    $media = $soma / count($numeros);
+    $maior = max($numeros);
+    $menor = min($numeros);
+
+    sort($numeros);
+
+    $quantidade = count($numeros);
+    $meio = intdiv($quantidade, 2);
+
+    if ($quantidade % 2 == 0) {
+        $mediana = ($numeros[$meio - 1] + $numeros[$meio]) / 2;
+    } else {
+        $mediana = $numeros[$meio];
+    }
+
+    $pares = 0;
+    $impares = 0;
+
+    foreach ($numeros as $numero) {
+        if ($numero % 2 == 0) {
+            $pares++;
+        } else {
+            $impares++;
+        }
+    }
+
+    return [
+        "soma" => $soma,
+        "media" => $media,
+        "maior" => $maior,
+        "menor" => $menor,
+        "mediana" => $mediana,
+        "pares" => $pares,
+        "impares" => $impares
+    ];
+}
+
+$numeros = [10, 5, 8, 3, 7, 2];
+
+$resultado = estatisticasNumericas($numeros);
+
+echo "soma: " . $resultado["soma"] . "<br>";
+echo "média: " . number_format($resultado["media"], 2, ",", ".") . "<br>";
+echo "maior valor: " . $resultado["maior"] . "<br>";
+echo "menor valor: " . $resultado["menor"] . "<br>";
+echo "mediana: " . $resultado["mediana"] . "<br>";
+echo "quantidade de pares: " . $resultado["pares"] . "<br>";
+echo "quantidade de ímpares: " . $resultado["impares"];
+
+?>
