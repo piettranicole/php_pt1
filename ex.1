@@ -1,0 +1,20 @@
+<?php
+
+function calcularFormula($x, $y) {
+    $soma = $x + $y;
+
+    if ($soma == 0) {
+        return "não foi possível realizar a divisão.";
+    }
+
+    return (($x * $x) + ($y * $y)) / $soma;
+}
+
+$x = 10;
+$y = 5;
+
+$resultado = calcularFormula($x, $y);
+
+echo "Resultado: " . $resultado;
+
+?>
