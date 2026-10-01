@@ -1,0 +1,21 @@
+<?php
+
+function formatarTexto($texto) {
+    return [
+        "maiusculas" => strtoupper($texto),
+        "minusculas" => strtolower($texto),
+        "primeira_maiuscula" => ucwords(strtolower($texto)),
+        "caracteres" => strlen($texto)
+    ];
+}
+
+$texto = "programação em php";
+
+$resultado = formatarTexto($texto);
+
+echo "texto em maiúsculas: " . $resultado["maiusculas"] . "<br>";
+echo "texto em minúsculas: " . $resultado["minusculas"] . "<br>";
+echo "primeira letra de cada palavra em maiúscula: " . $resultado["primeira_maiuscula"] . "<br>";
+echo "quantidade de caracteres: " . $resultado["caracteres"];
+
+?>
