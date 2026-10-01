@@ -1,0 +1,33 @@
+<?php
+
+function calcularMedia($notas) {
+    $maior = max($notas);
+    $menor = min($notas);
+    $media = array_sum($notas) / count($notas);
+
+    if ($media >= 7) {
+        $situacao = "aprovado";
+    } elseif ($media >= 5) {
+        $situacao = "recuperação";
+    } else {
+        $situacao = "reprovado";
+    }
+
+    return [
+        "maior" => $maior,
+        "menor" => $menor,
+        "media" => $media,
+        "situacao" => $situacao
+    ];
+}
+
+$notas = [8, 7, 9, 6];
+
+$resultado = calcularMedia($notas);
+
+echo "maior nota: " . $resultado["maior"] . "<br>";
+echo "menor nota: " . $resultado["menor"] . "<br>";
+echo "média: " . number_format($resultado["media"], 2, ",", ".") . "<br>";
+echo "situação final: " . $resultado["situacao"];
+
+?>
