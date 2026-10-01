@@ -1,0 +1,25 @@
+<?php
+
+function ordenarnomes($nomes) {
+    $lista = explode(",", $nomes);
+
+    foreach ($lista as &$nome) {
+        $nome = trim($nome);
+    }
+
+    sort($lista);
+
+    return $lista;
+}
+
+$nomes = " Ana, João, Carlos, Beatriz, Pedro ";
+
+$resultado = ordenarnomes($nomes);
+
+echo "lista organizada:<br>";
+
+foreach ($resultado as $nome) {
+    echo $nome . "<br>";
+}
+
+?>
