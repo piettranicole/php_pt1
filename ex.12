@@ -1,0 +1,51 @@
+<?php
+
+function analisarProdutos($produtos, $pesquisa) {
+    $maisCaro = $produtos[0];
+    $maisBarato = $produtos[0];
+    $soma = 0;
+    $encontrado = "produto não encontrado";
+
+    foreach ($produtos as $produto) {
+        $soma += $produto["preco"];
+
+        if ($produto["preco"] > $maisCaro["preco"]) {
+            $maisCaro = $produto;
+        }
+
+        if ($produto["preco"] < $maisBarato["preco"]) {
+            $maisBarato = $produto;
+        }
+
+        if (strtolower($produto["nome"]) == strtolower($pesquisa)) {
+            $encontrado = $produto["nome"] . " - r$ " . number_format($produto["preco"], 2, ",", ".");
+        }
+    }
+
+    $media = $soma / count($produtos);
+
+    return [
+        "mais_caro" => $maisCaro,
+        "mais_barato" => $maisBarato,
+        "media" => $media,
+        "pesquisa" => $encontrado
+    ];
+}
+
+$produtos = [
+    ["nome" => "arroz", "preco" => 25.90],
+    ["nome" => "feijão", "preco" => 8.50],
+    ["nome" => "leite", "preco" => 5.99],
+    ["nome" => "café", "preco" => 18.90]
+];
+
+$pesquisa = "café";
+
+$resultado = analisarProdutos($produtos, $pesquisa);
+
+echo "produto mais caro: " . $resultado["mais_caro"]["nome"] . " - r$ " . number_format($resultado["mais_caro"]["preco"], 2, ",", ".") . "<br>";
+echo "produto mais barato: " . $resultado["mais_barato"]["nome"] . " - r$ " . number_format($resultado["mais_barato"]["preco"], 2, ",", ".") . "<br>";
+echo "média dos preços: r$ " . number_format($resultado["media"], 2, ",", ".") . "<br>";
+echo "pesquisa: " . $resultado["pesquisa"];
+
+?>
